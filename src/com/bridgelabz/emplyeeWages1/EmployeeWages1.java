@@ -2,20 +2,30 @@ package com.bridgelabz.emplyeeWages1;
 
 public class EmployeeWages1 {
     //Constants are called inside the class only
-    private static int IS_PRESENT = 1;
+    private static final int IS_FULL_TIME = 1;
+    private static final int IS_PART_TIME = 2;
     private static int WAGE_PER_HOUR = 20;
-    private static int FULL_DAY_HOUR = 8;
 
     public static void main(String[] args) {
-
-        int empCheck = (int) Math.floor(Math.random() * 10) %2;
-        if( empCheck == IS_PRESENT ) {
-            System.out.println("Employee is Present");
-            int empWage = (int) Math.floor(WAGE_PER_HOUR * FULL_DAY_HOUR);
-            System.out.println("Employee Daily Wage:" +empWage);
-        } else {
-            System.out.println("Employee is Absent");
-            System.out.println("Employee DAily Wage:" +0 );
+        //Initiating Variables
+        int empWages = 0;
+        int empHours = 0;
+        //Employee Presentee calculation
+        int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+        switch (empCheck) {
+            case IS_FULL_TIME:
+                System.out.println("Employee has worked as Full Time");
+                empHours = 8;
+                break;
+            case IS_PART_TIME:
+                System.out.println("Employee has worked as Part Time");
+                empHours = 4;
+                break;
+            default :
+                System.out.println("Employee has not Worked");
+                empHours = 0;
         }
+               int empWage = empHours * WAGE_PER_HOUR;
+            System.out.println("Employee Daily Wage:" +empWage);
     }
 }
